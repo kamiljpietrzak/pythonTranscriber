@@ -40,8 +40,8 @@ class GUI:
         self.show_summary(total_files, total_duration)
 
     def run(self):
-        label = Label(self.window, text="Click the button to choose a directory and start transcribing!")
+        label = Label(self.window, text="Wybierz katalog w którym znajdują się pliki do transkrypcji!")
         label.pack(pady=20)
-        btn = Button(self.window, text="Choose Directory", command=self.start_transcription)
+        btn = Button(self.window, text="Zacznij transkrypcję!", command=self.start_transcription)
         btn.pack(pady=20)
         self.window.mainloop()
