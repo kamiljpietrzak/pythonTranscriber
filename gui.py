@@ -1,11 +1,17 @@
 import tkinter as tk
 from tkinter import filedialog, Label, Button
-
+from PIL import Image, ImageTk
 class GUI:
     def __init__(self, transcription, file_manager):
         self.transcription = transcription
         self.file_manager = file_manager
         self.window = tk.Tk()
+        #LOGO
+        image = Image.open("images/DataLabLogo.png")
+        image = image.resize((100, 100))
+        self.logo = ImageTk.PhotoImage(image)
+        logo_label = tk.Label(self.window, image=self.logo)
+        logo_label.pack(pady=20, side=tk.LEFT)
         self.window.title("Speech to Text")
 
     def choose_directory(self):
@@ -16,7 +22,8 @@ class GUI:
         summary_window.title("Podsumowanie")
 
         tk.Label(summary_window, text=f"Przetworzono {total_files} plików.").pack(pady=10)
-        tk.Label(summary_window, text=f"Łączny czas trwania plików: {total_duration} sekund.").pack(pady=10)
+        tk.Label(summary_window, text=f"Łączny czas trwania plików: {total_duration} sekund.").pack(pady=20)
+
 
         def close_program():
             summary_window.destroy()
@@ -40,8 +47,9 @@ class GUI:
         self.show_summary(total_files, total_duration)
 
     def run(self):
-        label = Label(self.window, text="Wybierz katalog w którym znajdują się pliki do transkrypcji!")
-        label.pack(pady=20)
+        label = Label(self.window, text="Wybierz katalog w którym\n znajdują się pliki do transkrypcji!")
+        label.pack(pady=20, side=tk.RIGHT)
+
         btn = Button(self.window, text="Zacznij transkrypcję!", command=self.start_transcription)
-        btn.pack(pady=20)
+        btn.pack(pady=20,side=tk.RIGHT)
         self.window.mainloop()
