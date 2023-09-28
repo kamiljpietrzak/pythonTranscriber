@@ -1,10 +1,11 @@
 import urllib.request
 import json
+from config import API_KEY #Create config.py with your api key inside
 
 
 class Transcription:
     def __init__(self, api_key, api_url):
-        self.api_key = api_key
+        self.api_key = API_KEY
         self.api_url = api_url
 
     def transcribe_audio(self, file_path):
